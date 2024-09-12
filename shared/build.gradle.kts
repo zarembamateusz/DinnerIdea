@@ -25,7 +25,15 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            api(project(":mvvm"))
             //put your multiplatform dependencies here
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.kotlinx.serialization.core)
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.touchlab.stately.common)
+            implementation(libs.touchlab.stately.concurrency)
+            implementation(libs.touchlab.stately.isolate)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
