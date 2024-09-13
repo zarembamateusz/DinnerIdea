@@ -1,4 +1,4 @@
-package com.shmz.dinneridea.screens.meals
+package com.shmz.dinneridea.screens.insight
 
 import com.shmz.dinneridea.repositories.MealRepository
 import com.shmz.dinneridea.repositories.MealRepositoryImpl
@@ -6,27 +6,27 @@ import com.shmz.mvvm.StatefulViewModel
 import com.shmz.mvvm.state
 import kotlinx.coroutines.launch
 
-class MealsListViewModel(
+class InsightListViewModel(
     // TODO: Deliver repository by DI.
     private val mealRepository: MealRepository = MealRepositoryImpl()
 ) : StatefulViewModel() {
 
-    var screenState: MealListScreenState by state(MealListScreenState.Loading)
+    var screenState: InsightScreenState by state(InsightScreenState.Loading)
         private set
 
     fun onStart() {
-        loadMeals()
+        loadMeal()
     }
 
-    private fun loadMeals() {
+    fun loadMeal() {
         viewModelScope.launch {
             kotlin.runCatching {
-                mealRepository.getMeals()
+                mealRepository.getRandomMeal()
             }.onSuccess {
-                screenState = MealListScreenState.Idle(meals = it)
+                screenState = InsightScreenState.Idle(meal = it)
             }.onFailure {
                 screenState =
-                    MealListScreenState.Error("Something went wrong") { onStart() }
+                    InsightScreenState.Error("Something went wrong") { onStart() }
             }
         }
     }

@@ -35,6 +35,12 @@ kotlin {
             implementation(libs.touchlab.stately.concurrency)
             implementation(libs.touchlab.stately.isolate)
         }
+        androidMain.dependencies {
+            implementation(libs.androidx.compose.runtime)
+            implementation(libs.androidx.lifecycle.viewmodelktx)
+            implementation(libs.androidx.lifecycle.savedstate)
+            implementation(libs.androidx.lifecycle.compose)
+        }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
