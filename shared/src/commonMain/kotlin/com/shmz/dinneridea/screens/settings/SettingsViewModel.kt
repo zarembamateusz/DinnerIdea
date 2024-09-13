@@ -1,7 +1,5 @@
 package com.shmz.dinneridea.screens.settings
 
-import com.shmz.dinneridea.repositories.MealRepository
-import com.shmz.dinneridea.repositories.MealRepositoryImpl
 import com.shmz.dinneridea.storage.SharedStorage
 import com.shmz.dinneridea.storage.SharedStorageImpl
 import com.shmz.dinneridea.storage.SharedStorageKeys
@@ -9,9 +7,7 @@ import com.shmz.mvvm.StatefulViewModel
 import com.shmz.mvvm.state
 import kotlinx.coroutines.launch
 
-class InsightListViewModel(
-    // TODO: Deliver repository by DI.
-    private val mealRepository: MealRepository = MealRepositoryImpl(),
+class SettingsViewModel(
     private val sharedStorage: SharedStorage = SharedStorageImpl()
 ) : StatefulViewModel() {
 

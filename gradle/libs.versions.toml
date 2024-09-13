@@ -12,6 +12,11 @@ datetime = "0.4.0"
 lifecycle = "2.5.1"
 webkit = "1.4.0"
 stately = "1.2.3"
+navigation = "2.7.7"
+material = "1.7.0"
+junit = "4.13.2"
+mockk = "1.13.5"
+mockative = "2.0.1"
 
 [libraries]
 androidx-compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
@@ -25,6 +30,7 @@ androidx-compose-material3-window = { module = "androidx.compose.material3:mater
 androidx-lifecycle-viewmodelktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 androidx-lifecycle-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
 androidx-lifecycle-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
 
 androidx-webkit = { module = "androidx.webkit:webkit", version.ref = "webkit" }
 
@@ -46,7 +52,12 @@ kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.
 touchlab-stately-common = { module = "co.touchlab:stately-common", version.ref = "stately" }
 touchlab-stately-concurrency = { module = "co.touchlab:stately-concurrency", version.ref = "stately" }
 touchlab-stately-isolate = { module = "co.touchlab:stately-isolate", version.ref = "stately" }
+google-android-material = { module = "com.google.android.material:material", version.ref = "material" }
 
+
+junit = { module = "junit:junit", version.ref = "junit" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+mockative = { module = "io.mockative:mockative", version.ref = "mockative" }
 
 
 [plugins]
