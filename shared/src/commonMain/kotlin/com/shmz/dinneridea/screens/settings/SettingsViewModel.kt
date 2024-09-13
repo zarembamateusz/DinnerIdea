@@ -7,10 +7,8 @@ import com.shmz.mvvm.StatefulViewModel
 import com.shmz.mvvm.state
 import kotlinx.coroutines.launch
 
-class SettingsViewModel(
+class SettingsViewModel : StatefulViewModel() {
     private val sharedStorage: SharedStorage = SharedStorageImpl()
-) : StatefulViewModel() {
-
     var screenState: SettingsScreenState by state(SettingsScreenState.Loading)
         private set
 

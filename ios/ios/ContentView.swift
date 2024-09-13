@@ -5,8 +5,11 @@ struct ContentView: View {
 	let greet = Greeting().greet()
 
 	var body: some View {
-		Text(greet)
-	}
+        Group {
+            HomeView()
+        }
+        .background(AppColors.background.edgesIgnoringSafeArea(.all))
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
