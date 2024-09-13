@@ -14,8 +14,18 @@ struct SettingsView: View {
     
     var body: some View {
         NavigationView {
-            VStack {  
-                LoadingScreen()
+            VStack(alignment: .leading) {
+                if let state = viewModel.screenState as? SettingsScreenStateIdle {
+                    SettingsDetailsView(
+                        displayedMealsCount: state.displayedMealsCount,
+                        changeDisplayedMealsCount: viewModel.changeDisplayedMealsCount,
+                        onClearFocus: { dismissKeyboard() }
+                    )
+                } else if let state = viewModel.screenState as? SettingsScreenStateError {
+                    ErrorView(errorMessage: state.errorMessage, onRetry: state.onRetry)
+                } else {
+                    LoadingView()
+                }
             }
             .navigationBarTitle("Settings", displayMode: .inline)
             .background(AppColors.background.edgesIgnoringSafeArea(.all))
@@ -27,12 +37,65 @@ struct SettingsView: View {
             }
         }
     }
+    
+    private func dismissKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }
 
-struct LoadingScreen: View {
+struct SettingsDetailsView: View {
+    
+    @State private var mealsCount: String = ""
+    @State private var errorMessage: String = ""
+    
+    init(displayedMealsCount: Int32, changeDisplayedMealsCount: @escaping (Int32) -> Void, onClearFocus: @escaping () -> Void) {
+        self.mealsCount = String(displayedMealsCount)
+        self.errorMessage = ""
+        self.changeDisplayedMealsCount = changeDisplayedMealsCount
+        self.onClearFocus = onClearFocus
+    }
+    let changeDisplayedMealsCount: (Int32) -> Void
+    let onClearFocus: () -> Void
+
     var body: some View {
-        HStack {
-            ProgressView().progressViewStyle(.circular)
-        }.background(AppColors.background.edgesIgnoringSafeArea(.all))
+        ScrollView {
+            VStack(alignment: .leading) {
+                VStack(alignment: .leading) {
+                    Text("How many meal ideas do you want to display?")
+                        .font(.subheadline)
+                        .foregroundColor(AppColors.onSecondary)
+                }
+                .padding(.vertical, 8)
+                TextField("", text: $mealsCount)
+                    .keyboardType(.decimalPad)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                Button(action: {
+                    onClearFocus()
+                    validateAndSave()
+                }) {
+                    Text("Save")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(AppColors.primary)
+                        .foregroundColor(AppColors.onPrimary)
+                        .cornerRadius(8)
+                }
+                .padding(.vertical, 16)
+                if !errorMessage.isEmpty {
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                }
+            }
+            .padding()
+        }
+    }
+
+    private func validateAndSave() {
+        guard let count = Int32(mealsCount) else {
+            errorMessage = "Invalid meal ideas count"
+            return
+        }
+        
+        changeDisplayedMealsCount(count)
     }
 }

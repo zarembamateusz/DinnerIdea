@@ -9,11 +9,10 @@ import com.shmz.mvvm.StatefulViewModel
 import com.shmz.mvvm.state
 import kotlinx.coroutines.launch
 
-class InsightViewModel(
+class InsightViewModel : StatefulViewModel() {
     // TODO: Deliver repository by DI.
-    private val mealRepository: MealRepository = MealRepositoryImpl(),
+    private val mealRepository: MealRepository = MealRepositoryImpl()
     private val sharedStorage: SharedStorage = SharedStorageImpl()
-) : StatefulViewModel() {
 
     var screenState: InsightScreenState by state(InsightScreenState.Loading)
         private set
@@ -25,7 +24,9 @@ class InsightViewModel(
     fun loadMeal() {
         viewModelScope.launch {
             kotlin.runCatching {
-                mealRepository.getRandomMeal((sharedStorage.getLong(SharedStorageKeys.DisplayedMealCount.name) ?: 1).toInt())
+                mealRepository.getRandomMeal(
+                    (sharedStorage.getLong(SharedStorageKeys.DisplayedMealCount.name) ?: 1).toInt()
+                )
             }.onSuccess {
                 screenState = InsightScreenState.Idle(meals = it)
             }.onFailure {

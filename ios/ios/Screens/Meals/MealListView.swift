@@ -10,18 +10,48 @@ import SwiftUI
 import shared
 
 struct MealListView: View {
+    @StateViewModel var viewModel = MealListViewModel()
+    
     var body: some View {
         NavigationView {
-            VStack {
-                LoadingScreen()
+            VStack(alignment: .leading) {
+                if let state = viewModel.screenState as? MealListScreenStateIdle {
+                    MealsView(
+                        meals: state.meals
+                    )
+                } else if let state = viewModel.screenState as? MealListScreenStateError {
+                    ErrorView(errorMessage: state.errorMessage, onRetry: state.onRetry)
+                } else {
+                    LoadingView()
+                }
             }
+            .frame(maxWidth: .infinity)
             .navigationBarTitle("Meals", displayMode: .inline)
             .background(AppColors.background.edgesIgnoringSafeArea(.all))
             .onAppear {
+                viewModel.onStart()
             }
             .onDisappear {
+                viewModel.onClear()
             }
         }
     }
 }
 
+struct MealsView: View {
+    let meals: [Meal]
+    
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading) {
+                Text("List of available meals:")
+                    .font(.subheadline)
+                    .foregroundColor(AppColors.onSecondary)
+            }
+            .padding(.vertical, 8)
+            ForEach(meals,  id: \.self) { meal in
+                MealView(meal: meal)
+            }
+        }
+    }
+}

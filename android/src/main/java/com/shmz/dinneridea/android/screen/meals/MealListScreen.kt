@@ -47,7 +47,7 @@ fun MealListScreen(
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
-            TitleAppBar(title = "Insight")
+            TitleAppBar(title = "Meals")
         },
         content = {
             Box(modifier = Modifier.padding(top = it.calculateTopPadding(), bottom = 16.dp).fillMaxWidth()) {

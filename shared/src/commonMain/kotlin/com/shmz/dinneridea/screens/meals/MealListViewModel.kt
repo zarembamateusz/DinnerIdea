@@ -6,10 +6,9 @@ import com.shmz.mvvm.StatefulViewModel
 import com.shmz.mvvm.state
 import kotlinx.coroutines.launch
 
-class MealListViewModel(
+class MealListViewModel : StatefulViewModel() {
     // TODO: Deliver repository by DI.
     private val mealRepository: MealRepository = MealRepositoryImpl()
-) : StatefulViewModel() {
 
     var screenState: MealListScreenState by state(MealListScreenState.Loading)
         private set

@@ -20,6 +20,8 @@
 		8D20A4562C9452ED00E30735 /* InsightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D20A4552C9452ED00E30735 /* InsightView.swift */; };
 		8D20A4582C9452F900E30735 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D20A4572C9452F900E30735 /* SettingsView.swift */; };
 		8D20A45A2C94530900E30735 /* MealListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D20A4592C94530900E30735 /* MealListView.swift */; };
+		8D20A45D2C94617E00E30735 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D20A45C2C94617E00E30735 /* ErrorView.swift */; };
+		8D20A4602C9461D700E30735 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D20A45F2C9461D700E30735 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +53,8 @@
 		8D20A4552C9452ED00E30735 /* InsightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightView.swift; sourceTree = "<group>"; };
 		8D20A4572C9452F900E30735 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8D20A4592C94530900E30735 /* MealListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListView.swift; sourceTree = "<group>"; };
+		8D20A45C2C94617E00E30735 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		8D20A45F2C9461D700E30735 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 		8D20A4422C94503500E30735 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				8D20A45E2C9461BE00E30735 /* Loading */,
+				8D20A45B2C94616300E30735 /* Error */,
 				8D20A4522C94524900E30735 /* Insight */,
 				8D20A4512C94524000E30735 /* Settings */,
 				8D20A4502C94522700E30735 /* Meals */,
@@ -171,6 +177,22 @@
 				8D20A4552C9452ED00E30735 /* InsightView.swift */,
 			);
 			path = Insight;
+			sourceTree = "<group>";
+		};
+		8D20A45B2C94616300E30735 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				8D20A45C2C94617E00E30735 /* ErrorView.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		8D20A45E2C9461BE00E30735 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				8D20A45F2C9461D700E30735 /* LoadingView.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,9 +294,11 @@
 				8D20A44A2C94512200E30735 /* ObservedViewModel.swift in Sources */,
 				8D20A4582C9452F900E30735 /* SettingsView.swift in Sources */,
 				8D20A4452C94506E00E30735 /* BottomSheetState.swift in Sources */,
+				8D20A45D2C94617E00E30735 /* ErrorView.swift in Sources */,
 				8D20A45A2C94530900E30735 /* MealListView.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				8D20A4602C9461D700E30735 /* LoadingView.swift in Sources */,
 				8D20A44C2C94515000E30735 /* ObservableViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

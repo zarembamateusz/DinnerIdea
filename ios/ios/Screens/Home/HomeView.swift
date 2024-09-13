@@ -48,7 +48,7 @@ struct HomeView: View {
                 self.tappedTwice = false
             })
             .tabItem {
-                Image(systemName: "doc")
+                Image(systemName: "list.clipboard")
                     .renderingMode(.template)
                 Text("Meals")
                     .fontWeight(selectedTab == .meals ? .medium : .regular)
@@ -67,7 +67,7 @@ struct HomeView: View {
                 self.tappedTwice = false
             })
             .tabItem {
-                Image(systemName: "list.clipboard")
+                Image(systemName: "arrow.counterclockwise")
                     .renderingMode(.template)
                 Text("Insight")
                     .fontWeight(selectedTab == .insight ? .medium : .regular)
