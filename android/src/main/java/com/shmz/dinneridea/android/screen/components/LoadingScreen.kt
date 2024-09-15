@@ -12,11 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.shmz.dinneridea.android.R
+import com.shmz.dinneridea.android.screen.asString
 
 @Composable
 fun LoadingScreen(
-    title: String = "Loading",
-    description: String = "Wait...",
+    title: String = R.string.loading.asString(),
+    description: String = R.string.wait.asString()
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),

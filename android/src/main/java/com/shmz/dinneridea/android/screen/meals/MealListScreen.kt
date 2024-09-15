@@ -15,7 +15,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.shmz.dinneridea.android.R
 import com.shmz.dinneridea.android.screen.StartEffect
+import com.shmz.dinneridea.android.screen.asString
 import com.shmz.dinneridea.android.screen.components.ErrorScreen
 import com.shmz.dinneridea.android.screen.components.ListItemSecondaryText
 import com.shmz.dinneridea.android.screen.components.ListItemText
@@ -47,10 +49,14 @@ fun MealListScreen(
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
-            TitleAppBar(title = "Meals")
+            TitleAppBar(title = R.string.meals.asString())
         },
         content = {
-            Box(modifier = Modifier.padding(top = it.calculateTopPadding(), bottom = 16.dp).fillMaxWidth()) {
+            Box(
+                modifier = Modifier
+                    .padding(top = it.calculateTopPadding(), bottom = 16.dp)
+                    .fillMaxWidth()
+            ) {
                 when (screenState) {
                     is MealListScreenState.Error -> ErrorScreen(
                         errorMessage = screenState.errorMessage,
@@ -70,11 +76,16 @@ fun MealListScreen(
 @Composable
 private fun MealList(meals: Meals) {
     Column(
-        modifier = Modifier.padding(16.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(modifier = Modifier.padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-            ListItemSecondaryText(text = "List of available meals:")
+        Column(
+            modifier = Modifier.padding(vertical = 8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            ListItemSecondaryText(text = R.string.listAvailableMeals.asString())
         }
         Spacer(modifier = Modifier.height(16.dp))
         LazyColumn(Modifier.fillMaxHeight()) {
@@ -89,7 +100,10 @@ private fun MealList(meals: Meals) {
 
 @Composable
 private fun Meal(meal: Meal) {
-    Column(modifier = Modifier.padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier.padding(vertical = 8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         ListItemText(text = meal.name)
     }
 }

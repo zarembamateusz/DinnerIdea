@@ -28,7 +28,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.shmz.dinneridea.android.R
 import com.shmz.dinneridea.android.screen.StartEffect
+import com.shmz.dinneridea.android.screen.asString
 import com.shmz.dinneridea.android.screen.components.ErrorScreen
 import com.shmz.dinneridea.android.screen.components.ListItemSecondaryText
 import com.shmz.dinneridea.android.screen.components.LoadingScreen
@@ -61,7 +63,7 @@ fun SettingsScreen(
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
-            TitleAppBar(title = "Insight")
+            TitleAppBar(title = R.string.settings.asString())
         },
         content = {
             val focusManager = LocalFocusManager.current
@@ -105,9 +107,9 @@ private fun SettingsPage(
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        var errorMessage by remember { mutableStateOf("") }
+        var presentError by remember { mutableStateOf(false) }
         var mealsCount by remember { mutableStateOf(TextFieldValue(displayedMealsCount.toString())) }
-        ListItemSecondaryText("How many meal ideas do you want to display?")
+        ListItemSecondaryText(R.string.mealIdeasCountQuestion.asString())
         Spacer(modifier = Modifier.height(16.dp))
         TextField(
             value = mealsCount,
@@ -123,20 +125,21 @@ private fun SettingsPage(
                 mealsCount.text.asInt()?.let {
                     changeDisplayedMealsCount(it)
                     onClearFocus()
+                    presentError = false
                 } ?: run {
-                    errorMessage = "Invalid meal ideas count"
+                    presentError = true
                 }
             }
         ) {
             Text(
-                text = "Save",
+                text = R.string.save.asString(),
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onPrimary
             )
         }
 
-        if (errorMessage.isNotEmpty()) {
-            ListItemSecondaryText(text = errorMessage)
+        if (presentError) {
+            ListItemSecondaryText(text = R.string.invalidCountMealIdeas.asString())
         }
     }
 }

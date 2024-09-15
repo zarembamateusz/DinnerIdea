@@ -9,7 +9,10 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun Feature(name: String, value: String) {
-    Column(modifier = Modifier.padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier.padding(vertical = 8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         ListItemSecondaryText(text = name)
         ListItemText(text = value)
     }

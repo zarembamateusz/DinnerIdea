@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="insight">Insight</string>
+    <string name="invalidCountMealIdeas">Invalid count of meal ideas</string>
+    <string name="listAvailableMeals">List of available meals:"</string>
+    <string name="loading">Loading"</string>
+    <string name="mealIdeasCountQuestion">How many meal ideas do you want to display?</string>
+    <string name="meals">"Meals"</string>
+    <string name="randomizeNewMeal">"Randomize a new meal"</string>
+    <string name="save">Save</string>
+    <string name="settings">Settings</string>
+    <string name="tryAgain">"Try again"</string>
+    <string name="yourIdeasForMeal">Your ideas for meal:</string>
+    <string name="wait">Wait…</string>
+</resources>

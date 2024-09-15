@@ -18,7 +18,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.shmz.dinneridea.android.R
 import com.shmz.dinneridea.android.screen.StartEffect
+import com.shmz.dinneridea.android.screen.asString
 import com.shmz.dinneridea.android.screen.components.ErrorScreen
 import com.shmz.dinneridea.android.screen.components.ListItemSecondaryText
 import com.shmz.dinneridea.android.screen.components.ListItemText
@@ -52,10 +54,14 @@ fun InsightScreen(
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
-            TitleAppBar(title = "Insight")
+            TitleAppBar(title = R.string.insight.asString())
         },
         content = {
-            Box(modifier = Modifier.padding(top = it.calculateTopPadding(), bottom = 16.dp).fillMaxWidth()) {
+            Box(
+                modifier = Modifier
+                    .padding(top = it.calculateTopPadding(), bottom = 16.dp)
+                    .fillMaxWidth()
+            ) {
                 when (screenState) {
                     is InsightScreenState.Error -> ErrorScreen(
                         errorMessage = screenState.errorMessage,
@@ -77,11 +83,17 @@ fun InsightScreen(
 @Composable
 private fun InsightDetails(meals: Meals, loadMeal: () -> Unit) {
     Column(
-        modifier = Modifier.padding(16.dp).fillMaxWidth().verticalScroll(rememberScrollState()),
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxWidth()
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(modifier = Modifier.padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-            ListItemSecondaryText(text = "Your ideas for meal:")
+        Column(
+            modifier = Modifier.padding(vertical = 8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            ListItemSecondaryText(text = R.string.yourIdeasForMeal.asString())
         }
         meals.forEach { meal ->
             Meal(meal)
@@ -92,7 +104,7 @@ private fun InsightDetails(meals: Meals, loadMeal: () -> Unit) {
             onClick = loadMeal
         ) {
             Text(
-                text = "Randomize a new meal",
+                text = R.string.randomizeNewMeal.asString(),
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onPrimary
             )
@@ -102,7 +114,10 @@ private fun InsightDetails(meals: Meals, loadMeal: () -> Unit) {
 
 @Composable
 private fun Meal(meal: Meal) {
-    Column(modifier = Modifier.padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier.padding(vertical = 8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         ListItemText(text = meal.name)
     }
 }

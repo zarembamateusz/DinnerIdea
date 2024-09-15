@@ -21,6 +21,7 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.shmz.dinneridea.android.R
+import com.shmz.dinneridea.android.screen.asString
 
 @Composable
 fun ErrorScreen(
@@ -51,7 +52,7 @@ fun ErrorScreen(
                 onClick = onRetry
             ) {
                 Text(
-                    text = "Try again",
+                    text = R.string.tryAgain.asString(),
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onPrimary
                 )

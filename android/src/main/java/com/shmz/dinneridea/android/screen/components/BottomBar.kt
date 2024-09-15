@@ -14,6 +14,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.shmz.dinneridea.android.AppColors
 import com.shmz.dinneridea.android.R
 import com.shmz.dinneridea.android.screen.Destination
+import com.shmz.dinneridea.android.screen.asString
 
 @Composable
 fun BottomBar(
@@ -63,9 +64,10 @@ fun Destination.asIcon(): Int =
         else -> R.drawable.ic_settings
     }
 
+@Composable
 fun Destination.asTitle(): String =
     when (this) {
-        Destination.MEALS -> "Meals"
-        Destination.INSIGHT -> "Insight"
-        Destination.SETTINGS -> "Settings"
-    }
+        Destination.MEALS -> R.string.meals
+        Destination.INSIGHT -> R.string.insight
+        Destination.SETTINGS -> R.string.settings
+    }.asString()
