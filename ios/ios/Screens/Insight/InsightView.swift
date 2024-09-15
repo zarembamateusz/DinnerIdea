@@ -27,7 +27,7 @@ struct InsightView: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            .navigationBarTitle("Insight", displayMode: .inline)
+            .navigationBarTitle(LocalizedStringKey("insight"), displayMode: .inline)
             .background(AppColors.background.edgesIgnoringSafeArea(.all))
             .onAppear {
                 viewModel.onStart()
@@ -39,7 +39,6 @@ struct InsightView: View {
     }
 }
 
-
 struct InsightDetailsView: View {
     let meals: [Meal]
     let loadMeal: () -> Void
@@ -47,7 +46,7 @@ struct InsightDetailsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text("Your ideas for meal:")
+                Text(LocalizedStringKey("yourIdeasForMeal"))
                     .font(.subheadline)
                     .foregroundColor(AppColors.onSecondary)
             }
@@ -58,8 +57,7 @@ struct InsightDetailsView: View {
             Button(action: {
                 loadMeal()
             }) {
-                Text("Randomize a new meal")
-                    .frame(maxWidth: .infinity)
+                Text(LocalizedStringKey("randomizeNewMeal"))
                     .padding()
                     .background(AppColors.primary)
                     .foregroundColor(AppColors.onPrimary)

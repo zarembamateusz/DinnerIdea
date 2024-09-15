@@ -26,7 +26,8 @@ struct MealListView: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            .navigationBarTitle("Meals", displayMode: .inline)
+            .navigationBarTitle(LocalizedStringKey("meals"), displayMode: .inline)
+            .foregroundColor(AppColors.onPrimary)
             .background(AppColors.background.edgesIgnoringSafeArea(.all))
             .onAppear {
                 viewModel.onStart()
@@ -44,7 +45,7 @@ struct MealsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text("List of available meals:")
+                Text(LocalizedStringKey("listAvailableMeals"))
                     .font(.subheadline)
                     .foregroundColor(AppColors.onSecondary)
             }

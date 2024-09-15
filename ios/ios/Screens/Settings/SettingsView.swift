@@ -27,7 +27,7 @@ struct SettingsView: View {
                     LoadingView()
                 }
             }
-            .navigationBarTitle("Settings", displayMode: .inline)
+            .navigationBarTitle(LocalizedStringKey("settings"), displayMode: .inline)
             .background(AppColors.background.edgesIgnoringSafeArea(.all))
             .onAppear {
                 viewModel.onStart()
@@ -46,11 +46,11 @@ struct SettingsView: View {
 struct SettingsDetailsView: View {
     
     @State private var mealsCount: String = ""
-    @State private var errorMessage: String = ""
+    @State private var presentError: Bool = false
     
     init(displayedMealsCount: Int32, changeDisplayedMealsCount: @escaping (Int32) -> Void, onClearFocus: @escaping () -> Void) {
         self.mealsCount = String(displayedMealsCount)
-        self.errorMessage = ""
+        self.presentError = false
         self.changeDisplayedMealsCount = changeDisplayedMealsCount
         self.onClearFocus = onClearFocus
     }
@@ -61,7 +61,7 @@ struct SettingsDetailsView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
-                    Text("How many meal ideas do you want to display?")
+                    Text(LocalizedStringKey("mealIdeasCountQuestion"))
                         .font(.subheadline)
                         .foregroundColor(AppColors.onSecondary)
                 }
@@ -73,7 +73,7 @@ struct SettingsDetailsView: View {
                     onClearFocus()
                     validateAndSave()
                 }) {
-                    Text("Save")
+                    Text(LocalizedStringKey("save"))
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(AppColors.primary)
@@ -81,8 +81,8 @@ struct SettingsDetailsView: View {
                         .cornerRadius(8)
                 }
                 .padding(.vertical, 16)
-                if !errorMessage.isEmpty {
-                    Text(errorMessage)
+                if presentError {
+                    Text(LocalizedStringKey("invalidCountMealIdeas"))
                         .foregroundColor(.red)
                 }
             }
@@ -92,10 +92,10 @@ struct SettingsDetailsView: View {
 
     private func validateAndSave() {
         guard let count = Int32(mealsCount) else {
-            errorMessage = "Invalid meal ideas count"
+            presentError = true
             return
         }
-        
+        presentError = false
         changeDisplayedMealsCount(count)
     }
 }

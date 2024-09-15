@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  ios
+
+  Created by Mateusz Zaremba on 15/09/2024.
+  Copyright © 2024 orgName. All rights reserved.
+*/
+
+"insight" = "Insight";
+"invalidCountMealIdeas" = "Invalid count of meal ideas";
+"listAvailableMeals" = "List of available meals:";
+"loading" = "Loading";
+"mealIdeasCountQuestion" = "How many meal ideas do you want to display?";
+"meals" = "Meals";
+"randomizeNewMeal" = "Randomize a new meal";
+"save" = "Save";
+"settings" = "Settings";
+"tryAgain" = "Try again";
+"yourIdeasForMeal" = "Your ideas for meal:";
+"wait" = "Wait…";

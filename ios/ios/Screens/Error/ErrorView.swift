@@ -18,7 +18,7 @@ struct ErrorView: View {
                 .foregroundColor(.red)
                 .padding()
             Button(action: onRetry) {
-                Text("Try again")
+                Text(LocalizedStringKey("tryAgain"))
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(AppColors.primary)

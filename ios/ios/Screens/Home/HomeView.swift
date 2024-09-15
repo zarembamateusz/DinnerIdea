@@ -17,7 +17,6 @@ extension HomeView {
     }
 }
 
-
 struct HomeView: View {
     @State private var selectedTab: TabItem = .insight
     @State private var tappedTwice = false
@@ -50,8 +49,10 @@ struct HomeView: View {
             .tabItem {
                 Image(systemName: "list.clipboard")
                     .renderingMode(.template)
-                Text("Meals")
-                    .fontWeight(selectedTab == .meals ? .medium : .regular)
+                if selectedTab == .meals {
+                    Text(LocalizedStringKey("meals"))
+                        .fontWeight(selectedTab == .meals ? .medium : .regular)
+                }
             }
             .background(TabBarAccessor { tabBar in
                         tabBar.unselectedItemTintColor = UIColor(AppColors.onPrimary)
@@ -69,8 +70,10 @@ struct HomeView: View {
             .tabItem {
                 Image(systemName: "arrow.counterclockwise")
                     .renderingMode(.template)
-                Text("Insight")
-                    .fontWeight(selectedTab == .insight ? .medium : .regular)
+                if selectedTab == .insight {
+                    Text(LocalizedStringKey("insight"))
+                        .fontWeight(.medium)
+                }
             }
             .tag(TabItem.insight)
 
@@ -86,16 +89,16 @@ struct HomeView: View {
             .tabItem {
                 Image(systemName: "gear")
                     .renderingMode(.template)
-                Text("Settings")
-                    .fontWeight(selectedTab == .settings ? .medium : .regular)
+                if selectedTab == .settings {
+                    Text(LocalizedStringKey("settings"))
+                        .fontWeight(.medium)
+                }
             }
             .tag(TabItem.settings)
         }
-        .accentColor(AppColors.primary)
+        .accentColor(AppColors.onPrimary)
         .background(AppColors.background.edgesIgnoringSafeArea(.all))
-    
     }
-
 }
 
 struct TabBarAccessor: UIViewControllerRepresentable {
