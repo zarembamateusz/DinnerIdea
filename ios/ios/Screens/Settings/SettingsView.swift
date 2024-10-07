@@ -27,7 +27,6 @@ struct SettingsView: View {
                     LoadingView()
                 }
             }
-            .navigationBarTitle(LocalizedStringKey("settings"), displayMode: .inline)
             .background(AppColors.background.edgesIgnoringSafeArea(.all))
             .onAppear {
                 viewModel.onStart()

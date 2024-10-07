@@ -19,7 +19,6 @@ extension HomeView {
 
 struct HomeView: View {
     @State private var selectedTab: TabItem = .insight
-    @State private var tappedTwice = false
     @State private var mealsTab = UUID()
     @State private var insightTab = UUID()
     @State private var settingsTab = UUID()
@@ -29,9 +28,6 @@ struct HomeView: View {
             self.selectedTab
         },
         set: {
-            if $0 == self.selectedTab {
-                tappedTwice = true
-            }
             self.selectedTab = $0
         }
     )}
@@ -40,12 +36,6 @@ struct HomeView: View {
         TabView(selection: handler) {
             MealListView()
             .id(mealsTab)
-            .onChange(of: tappedTwice, perform: { tappedTwice in
-                guard tappedTwice && selectedTab == .meals else {
-                    return
-                }
-                self.tappedTwice = false
-            })
             .tabItem {
                 Image(systemName: "list.clipboard")
                     .renderingMode(.template)
@@ -61,12 +51,6 @@ struct HomeView: View {
             
             InsightView()
             .id(insightTab)
-            .onChange(of: tappedTwice, perform: { tappedTwice in
-                guard tappedTwice && selectedTab == .insight else {
-                    return
-                }
-                self.tappedTwice = false
-            })
             .tabItem {
                 Image(systemName: "arrow.counterclockwise")
                     .renderingMode(.template)
@@ -79,13 +63,6 @@ struct HomeView: View {
 
             SettingsView()
             .id(settingsTab)
-            .onChange(of: tappedTwice, perform: { tappedTwice in
-                guard tappedTwice && selectedTab == .settings else {
-                    return
-                }
-                settingsTab = UUID()
-                self.tappedTwice = false
-            })
             .tabItem {
                 Image(systemName: "gear")
                     .renderingMode(.template)

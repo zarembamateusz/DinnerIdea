@@ -40,7 +40,6 @@ class MainActivity : ComponentActivity() {
                         NavGraph(
                             navController = navController
                         )
-
                     }
                 }
             }

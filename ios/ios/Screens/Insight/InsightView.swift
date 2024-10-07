@@ -15,6 +15,9 @@ struct InsightView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Text("Insight").font(.headline)
+                    .foregroundColor(AppColors.onPrimary)
+                .frame(alignment: .center)
                 if let state = viewModel.screenState as? InsightScreenStateIdle {
                     InsightDetailsView(
                         meals: state.meals,
@@ -27,7 +30,7 @@ struct InsightView: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            .navigationBarTitle(LocalizedStringKey("insight"), displayMode: .inline)
+//            .navigationBarTitle(LocalizedStringKey("insight"), displayMode: .inline)
             .background(AppColors.background.edgesIgnoringSafeArea(.all))
             .onAppear {
                 viewModel.onStart()
