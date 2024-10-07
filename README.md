@@ -11,3 +11,10 @@ Dinner Idea is a simple demo application (created in less than 5 hours) in which
 
 ## iOS
 
+![simulator_screenshot_37FAB951-5BA3-4F14-B152-20422F4284C0](https://github.com/user-attachments/assets/00053756-0b79-45e8-9997-81d8b366537d)
+
+
+## Todo
+- [ ] - DI
+- [ ] - unit test
+- [ ] - clean view structure
